@@ -56,7 +56,6 @@ store.on("error", () => {
 
 const sessionOption = {
     store,
-    name: 'session', // Custom session name to avoid default
     secret:process.env.SECRET,
     resave:false,
     saveUninitialized : false,
