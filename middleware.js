@@ -4,12 +4,10 @@ const ExpressErorr = require("./utils/ExpressErorr.js");
 const {listingSchema,reviewSchema} = require("./schema.js");
 const review = require("./models/review.js");
 
-module.exports.isLoggedIn = (req, res, next) => {
-    console.log("🧪 SESSION:", req.session);
-    console.log("🧪 IS AUTHENTICATED:", req.isAuthenticated());
-    if (!req.isAuthenticated()) {
+module.exports.isLoggedIn = (req,res,next) => {
+    if(!req.isAuthenticated()){
         req.session.redirectUrl = req.originalUrl;
-        req.flash("error", "You Must Be Logged In To Create Listing!");
+        req.flash("error","You Must Be Logged In To Create Listing!");
         return res.redirect("/login");
     }
     next();
